@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerTrack | Job & Internship Tracker</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            🚀 CareerTrack
+        </div>
+
+        <nav class="nav">
+
+            <button id="dashboardBtn" class="active">
+                📊 Dashboard
+            </button>
+
+            <button id="applicationsBtn">
+                💼 Applications
+            </button>
+
+            <button id="interviewsBtn">
+                🗓️ Interviews
+            </button>
+
+        </nav>
+
+        <button id="themeBtn" class="theme-btn">
+            🌙 Dark Mode
+        </button>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <!-- TOP -->
+        <div class="topbar">
+
+            <div class="title">
+                <h1>Good day! 👋</h1>
+                <p>Manage your career journey in one place.</p>
+            </div>
+
+            <button id="addApplicationBtn" class="add-btn">
+                + Add Application
+            </button>
+
+        </div>
+
+
+        <!-- STATISTICS -->
+        <section class="stats">
+
+            <div class="stat-card">
+                <div class="stat-icon">📋</div>
+
+                <div>
+                    <p>Total Applications</p>
+                    <h2 id="totalApplications">0</h2>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-icon">📨</div>
+
+                <div>
+                    <p>Applied</p>
+                    <h2 id="appliedCount">0</h2>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-icon">🎤</div>
+
+                <div>
+                    <p>Interviews</p>
+                    <h2 id="interviewCount">0</h2>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-icon">🎉</div>
+
+                <div>
+                    <p>Selected</p>
+                    <h2 id="selectedCount">0</h2>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- UPCOMING INTERVIEWS -->
+         
+        <section class="section">
+
+            <h2>🗓️ Upcoming Interviews</h2>
+
+            <p class="section-subtitle">
+                Keep track of your interview schedule.
+            </p>
+
+            <div id="interviewList" class="application-list">
+
+                <div class="empty">
+                    <h3>🎤 No interviews yet</h3>
+
+                    <p>
+                        Applications marked as "Interview"
+                        will appear here.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- APPLICATIONS -->
+        <section class="section" id="applicationsSection">
+
+            <h2>💼 My Applications</h2>
+
+            <p class="section-subtitle">
+                Keep track of your job and internship applications.
+            </p>
+
+
+            <!-- SEARCH + FILTER -->
+            <div class="filters">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="🔍 Search company or position..."
+                >
+
+                <select id="statusFilter">
+
+                    <option value="All">
+                        All Statuses
+                    </option>
+
+                    <option value="Applied">
+                        Applied
+                    </option>
+
+                    <option value="Interview">
+                        Interview
+                    </option>
+
+                    <option value="Selected">
+                        Selected
+                    </option>
+
+                    <option value="Rejected">
+                        Rejected
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- APPLICATION LIST -->
+            <div
+                id="applicationList"
+                class="application-list"
+            >
+
+                <div class="empty">
+                    <h3>📭 No applications yet</h3>
+
+                    <p>
+                        Click "+ Add Application" to add your first application.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- =========================
+     ADD / EDIT MODAL
+========================= -->
+
+<div id="applicationModal" class="modal">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h2 id="modalTitle">
+                Add Application
+            </h2>
+
+            <button
+                id="closeModalBtn"
+                class="close-btn"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="applicationForm">
+
+            <!-- COMPANY -->
+            <div class="form-group">
+
+                <label for="company">
+                    Company Name
+                    <!-- JOB LINK -->
+<div class="form-group">
+
+    <label for="jobLink">
+        🔗 Job Posting Link
+    </label>
+
+    <input
+        type="url"
+        id="jobLink"
+        placeholder="https://example.com/job"
+    >
+
+</div>
+                </label>
+
+                <input
+                    type="text"
+                    id="company"
+                    placeholder="e.g. Google"
+                    required
+                >
+
+            </div>
+
+
+            <!-- POSITION -->
+            <div class="form-group">
+
+                <label for="position">
+                    Job / Internship Position
+                </label>
+
+                <input
+                    type="text"
+                    id="position"
+                    placeholder="e.g. Software Engineering Intern"
+                    required
+                >
+
+            </div>
+
+
+            <!-- APPLICATION DATE -->
+            <div class="form-group">
+
+                <label for="applicationDate">
+                    Application Date
+                </label>
+
+                <input
+                    type="date"
+                    id="applicationDate"
+                    required
+                >
+
+            </div>
+
+
+            <!-- INTERVIEW DATE -->
+            <div class="form-group">
+
+                <label for="interviewDate">
+                    Interview Date
+                </label>
+
+                <input
+                    type="date"
+                    id="interviewDate"
+                >
+
+            </div>
+
+
+            <!-- INTERVIEW TIME -->
+            <div class="form-group">
+
+                <label for="interviewTime">
+                    Interview Time
+                </label>
+
+                <input
+                    type="time"
+                    id="interviewTime"
+                >
+
+            </div>
+
+
+            <!-- NOTES -->
+            <div class="form-group">
+
+                <label for="notes">
+                    Interview Notes
+                </label>
+
+                <textarea
+                    id="notes"
+                    placeholder="e.g. Prepare DSA concepts..."
+                ></textarea>
+
+            </div>
+
+
+            <!-- STATUS -->
+            <div class="form-group">
+
+                <label for="status">
+                    Application Status
+                </label>
+
+                <select id="status">
+
+                    <option value="Applied">
+                        Applied
+                    </option>
+
+                    <option value="Interview">
+                        Interview
+                    </option>
+
+                    <option value="Selected">
+                        Selected
+                    </option>
+
+                    <option value="Rejected">
+                        Rejected
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- BUTTONS -->
+            <div class="form-buttons">
+
+                <button
+                    type="button"
+                    id="cancelBtn"
+                    class="cancel-btn"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    id="saveBtn"
+                    class="save-btn"
+                >
+                    Add Application
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- JAVASCRIPT -->
+<script src="script.js"></script>
+
+</body>
+</html>
